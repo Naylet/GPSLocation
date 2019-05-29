@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GPSlocation</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="odswiez">Odśwież</string>
+    <string name="temperature">Temperature</string>
+    <string name="update_temperature">Update temperature</string>
+    <string name="update_location">Update location</string>
+</resources>
