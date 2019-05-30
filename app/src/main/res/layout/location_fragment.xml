@@ -47,7 +47,7 @@
             app:layout_constraintStart_toStartOf="@+id/tableLayout"
             android:layout_marginEnd="43dp" android:layout_marginRight="43dp"
             app:layout_constraintEnd_toEndOf="@+id/tableLayout" app:layout_constraintHorizontal_bias="0.0"
-            android:clickable="false" app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"/>
     <ProgressBar
             style="?android:attr/progressBarStyle"
             android:layout_width="180dp"

@@ -34,7 +34,7 @@ class LocationFragment : Fragment(){
         override fun onLocationChanged(location: Location) {
             longitude.text = location.longitude.toString()
             latitude.text = location.latitude.toString()
-            updateButton.isClickable = true
+            updateButton.isEnabled = true
             progressBar.visibility = View.INVISIBLE
         }
         override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
@@ -94,7 +94,7 @@ class LocationFragment : Fragment(){
             locationManager?.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, locationListener)
 
             progressBar.visibility = View.VISIBLE
-            updateButton.isClickable = false
+            updateButton.isEnabled = false
         }
         else{
             ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION), PERMISSIONS_REQUEST_LOCATION)
