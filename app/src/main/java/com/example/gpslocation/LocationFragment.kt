@@ -42,14 +42,6 @@ class LocationFragment : Fragment(){
         override fun onProviderDisabled(provider: String) {}
     }
 
-//    private val broadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
-//        override fun onReceive(context: Context?, intent: Intent?) {
-//
-//        }
-//
-//    }
-
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view:View = inflater.inflate(R.layout.location_fragment, container, false)
 
@@ -61,29 +53,11 @@ class LocationFragment : Fragment(){
         // Create persistent LocationManager reference
         locationManager = requireActivity().getSystemService(LOCATION_SERVICE) as LocationManager?
 
-        updateButton.setOnClickListener {
-            getLocation()
-        }
+        updateButton.setOnClickListener { getLocation() }
 
         getLocation()
 
         return view
-    }
-
-
-    @SuppressLint("MissingPermission")
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        when(requestCode){
-            PERMISSIONS_REQUEST_LOCATION -> {
-                if ((grantResults.isNotEmpty() && (grantResults[0] == PackageManager.PERMISSION_GRANTED || grantResults[1] == PackageManager.PERMISSION_GRANTED))) {
-                    locationManager?.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, locationListener)
-                }
-            }
-            else -> {permissionDeniedMessage()}
-
-        }
     }
 
     private fun getLocation(){
@@ -98,6 +72,21 @@ class LocationFragment : Fragment(){
         }
         else{
             ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION), PERMISSIONS_REQUEST_LOCATION)
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when(requestCode){
+            PERMISSIONS_REQUEST_LOCATION -> {
+                if ((grantResults.isNotEmpty() && (grantResults[0] == PackageManager.PERMISSION_GRANTED || grantResults[1] == PackageManager.PERMISSION_GRANTED))) {
+                    locationManager?.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, locationListener)
+                }
+            }
+            else -> {permissionDeniedMessage()}
+
         }
     }
 

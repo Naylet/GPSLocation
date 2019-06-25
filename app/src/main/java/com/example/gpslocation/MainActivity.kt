@@ -50,13 +50,8 @@ class MainActivity : AppCompatActivity() {
                 viewpagerMain.currentItem = tab.position
             }
 
-            override fun onTabUnselected(tab: TabLayout.Tab) {
-
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab) {
-
-            }
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {}
 
         })
     }
